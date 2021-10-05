@@ -1,7 +1,7 @@
 <template lang="">
   <div>
-    <v-row>
-      <v-card color="#B3E5FC" class="width100 mb-6 pa-4">
+    <v-row v-if="cat.subcategory.length">
+      <v-card  color="#B3E5FC" class="width100 mb-6 pa-4">
         <div class="max-width">
           <v-btn
             
