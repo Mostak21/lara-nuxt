@@ -41,7 +41,7 @@
 
                 <v-icon 
                  
-                  color="red darken-3" @click="delet_comment"
+                  color="red darken-3" @click="delet_comment(item.id)"
                 >
                   mdi-delete-circle
                 </v-icon>
@@ -135,15 +135,26 @@ export default {
           
         })
         .catch(err => {
-          console.error(err);
+          this.msg=err;
         });
 
         
     },
 
 
-    delet_comment(){
-          console.log("hi baby");
+    delet_comment(id){
+           this.$axios
+        .$delete("/api/comment/"+id)
+        .then(res => {
+          this.msg = res;
+          this.snackbar = true;
+          this.$nuxt.refresh()
+          
+        })
+        .catch(err => {
+          this.msg=err;
+        });
+
     }
   }
 };
