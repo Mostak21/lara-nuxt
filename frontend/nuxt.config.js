@@ -99,8 +99,8 @@ export default {
         },
         light: {
 
-          primary: '#CFD8DC',
-          secondary: '#80D8FF', // #FFCDD2
+          primary: '#03A9F4',
+          secondary: '#B3E5FC', // #FFCDD2
           light:'#ECEFF1', // #3F51B5
 
         }
