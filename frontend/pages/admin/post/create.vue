@@ -73,8 +73,8 @@
                     <v-file-input
                   v-model="post.thumbnail"
                  
-                  label="Select Thumbnail "
-                  accept="image/png, image/jpeg, image/bmp"
+                  label="Select Thumbnail"
+                  
                   @change="Preview_image"
                   prepend-icon="mdi-paperclip"
                 >
@@ -174,6 +174,7 @@ export default {
           console.error(err);
         });
     },
+
     fetch_subcategory(id) {
       this.$axios
         .$get("/api/category/" + id)
@@ -186,17 +187,23 @@ export default {
     },
 
     submit() {
+
+      let Data = new FormData();
+      for (var key in this.post) {
+        Data.append(key, this.post[key]);
+      }
       this.$axios
-        .$post("http://127.0.0.1:8000/api/post", this.post)
+        .$post("http://127.0.0.1:8000/api/post", Data)
         .then(res => {
           this.msg = res;
           this.snackbar=true;
         });
     },
+
      Preview_image() {
-      if (!this.category.image) this.url = null;
-      if (this.category.image)
-        this.url = URL.createObjectURL(this.category.image);
+      if (!this.post.image) this.url = null;
+      if (this.post.image)
+        this.url = URL.createObjectURL(this.post.image);
     }
   }
 };
